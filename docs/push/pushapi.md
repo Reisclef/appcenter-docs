@@ -161,5 +161,17 @@ Below, you will find an example where we target the follwing devices IDs: `00000
 }
 ```
 
+## Send notifications to all registered devices
 
-
+This is an example of sending a Push Notifications to all registered devices.
+```
+{
+ "notification_content" : {
+  "name" : "First Push From App Center",
+  "title" : "Push From App Center",
+  "body" : "Welcome!",
+  "custom_data" : {"key1" : "val1", "key2" : "val2"}
+  },
+    "notification_target" : null
+}
+```
