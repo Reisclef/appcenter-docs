@@ -4,7 +4,7 @@ description: Help using the Push on App Center
 keywords: app center, push
 author: dimazaid
 ms.author: dimazaid
-ms.date: 08/08/2018
+ms.date: 10/09/2018
 ms.topic: article
 ms.assetid: B2CF9BFA-4C31-484C-83F7-9DD0E10AA8BD
 ms.service: vs-appcenter
@@ -36,6 +36,19 @@ The next step is to select your target. You can send the notification to:
 - All registered devices: all your users with push notifications opt-in will received the message.
 - Custom devices list: the notification will be sent to the list of install IDs that you include. You can get the install IDs by using our [SDK API](~/sdk/other-apis/android.md).
 - [Audiences](~/push/audiences.md): this will send a notification to a segment of your users based on a set of device and [custom properties](~/sdk/other-apis/ios.md).
+
+## Delay showing the Push Notifications permission pop-up until the user click a button or a certain screen
+
+You can call `AppCenter.Start("{APP-SECRET}", services)` without specifying the Push service. Then, once the user has opted in to receive push notifications, you can call `AppCenter.Start(typeof(Push))` to start the Push service.
+Note that the second call to `Start()` does not include the app secret. Here's how: 
+
+`// call start with app secret WITHOUT Push`
+
+`AppCenter.Start(appCenterAPIKey, typeof(Crashes), typeof(Analytics));`
+
+`// then on button click do:`
+
+`AppCenter.Start(typeof(Push));`
 
 ## Custom Data in your notifications
 
