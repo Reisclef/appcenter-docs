@@ -37,6 +37,19 @@ The next step is to select your target. You can send the notification to:
 - Custom devices list: the notification will be sent to the list of install IDs that you include. You can get the install IDs by using our [SDK API](~/sdk/other-apis/android.md).
 - [Audiences](~/push/audiences.md): this will send a notification to a segment of your users based on a set of device and [custom properties](~/sdk/other-apis/ios.md).
 
+## Delay showing the Push Notifications permission pop-up until the user click a button or a certain screen
+
+You can call `AppCenter.Start("{APP-SECRET}", services)` without specifying the Push service. Then, once the user has opted in to receive push notifications, you can call `AppCenter.Start(typeof(Push))` to start the Push service.
+Note that the second call to `Start()` does not include the app secret. Here's how: 
+
+`// call start with app secret WITHOUT Push`
+
+`AppCenter.Start(appCenterAPIKey, typeof(Crashes), typeof(Analytics));`
+
+`// then on button click do:`
+
+`AppCenter.Start(typeof(Push));`
+
 ## Custom Data in your notifications
 
 You can send optional custom data as part of the push payload. The data will be sent in the key-value format. This custom data can be intercepted in the app through Push SDK callback.
